@@ -108,8 +108,8 @@ class WorkersControllerTest extends TestCase
         $expectedWorking = factory(Worker::class, 5)->create(['work_end' => \Carbon\Carbon::now()]);
         $expectedNotWorking = factory(Worker::class, 5)->create(['work_end' => null]);
 
-        $responseWorking = $this->get('/admin/workers?working=1');
-        $responseNotWorking = $this->get('/admin/workers?working=0');
+        $responseWorking = $this->get('/admin/workers?working=true');
+        $responseNotWorking = $this->get('/admin/workers?working=false');
 
         $responseWorking->assertStatus(200);
         $responseNotWorking->assertStatus(200);
@@ -144,8 +144,8 @@ class WorkersControllerTest extends TestCase
         $expectedWorking = $expectedWorkingPart->forPage(2, $this->workersQuantityPerPage);
         $expectedNotWorking = $expectedNotWorkingPart->forPage(2, $this->workersQuantityPerPage);
 
-        $responseWorking = $this->get('/admin/workers?department=' . $department->id . '&working=1&page=2');
-        $responseNotWorking = $this->get('/admin/workers?department=' . $department->id . '&working=0&page=2');
+        $responseWorking = $this->get('/admin/workers?department=' . $department->id . '&working=true&page=2');
+        $responseNotWorking = $this->get('/admin/workers?department=' . $department->id . '&working=false&page=2');
 
         $responseWorking->assertStatus(200);
         $responseNotWorking->assertStatus(200);

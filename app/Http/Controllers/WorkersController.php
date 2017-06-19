@@ -26,8 +26,8 @@ class WorkersController extends Controller
         if ($department) {
             $builder->where('department_id', $department);
         }
-        if (isset($working)) {
-            $builder->{$working ? 'whereNotNull' : 'whereNull'}('work_end');
+        if (isset($working) && ($working == 'true' || $working == 'false')) {
+            $builder->{$working == 'true' ? 'whereNotNull' : 'whereNull'}('work_end');
         }
         $workers = $builder->paginate($this->quantityPerPage);
 

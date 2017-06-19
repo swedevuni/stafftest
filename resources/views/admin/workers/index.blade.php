@@ -24,7 +24,7 @@
                     <span class="input-group-addon">Работает в компании?</span>
                     <select name="working" class="form-control">
                         <option value="">Все варианты</option>
-                        @foreach ([1 => 'Да', 0 => 'Нет'] as $value => $label)
+                        @foreach (['true' => 'Да', 'false' => 'Нет'] as $value => $label)
                         <option value="{{ $value }}"
                             @if (app('request')->input('working') == $value)
                             selected="selected"
@@ -38,7 +38,7 @@
             </form>
             <form>
                 @if (app('request')->input('page') > 1)
-                <input type="hidden" name="page" value="{{ app('request')->input('page') }}">
+                <!--<input type="hidden" name="page" value="{{ app('request')->input('page') }}">-->
                 @endif
                 <button class="btn btn-default clear-btn" type="submit">Сбросить</button>
             </form>
