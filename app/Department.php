@@ -8,7 +8,10 @@ class Department extends Model
 {
     protected $guarded = [];
 
-    public function receive(Worker $worker) {
-        $worker->department()->associate($this)->save();
+    public function receive($worker) {
+        $workers = ($worker instanceof Worker) ? collect([$worker]) : $worker;
+        $workers->each(function ($w) {
+            $w->department()->associate($this)->save();
+        });
     }
 }
