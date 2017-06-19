@@ -17,4 +17,5 @@ Route::get('/', function () {
 
 Route::prefix('admin/workers')->group(function () {
     Route::get('/', 'WorkersController@index');
+    Route::get('{id}', 'WorkersController@detail');
 });

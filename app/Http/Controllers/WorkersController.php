@@ -32,8 +32,22 @@ class WorkersController extends Controller
         $workers = $builder->paginate($this->quantityPerPage);
 
         return view('admin.workers.index', [
-            'departments' => \App\Department::all(),    
+            'departments' => \App\Department::all(),
             'workers' => $workers->appends(Input::except('page'))
+        ]);
+    }
+
+    public function detail($id)
+    {
+        $worker = $this->worker->find($id);
+        $data = $worker->toArray();
+        unset($data['department_id']);
+        unset($data['created_at']);
+        unset($data['updated_at']);
+        $data['department'] = $worker->department->title;
+
+        return view('admin.workers.detail', [
+            'data' => $data
         ]);
     }
 }

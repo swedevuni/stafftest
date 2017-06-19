@@ -166,4 +166,27 @@ class WorkersControllerTest extends TestCase
             return true;
         });
     }
+
+    /** @test */
+    public function worker_detail_info_is_accessible()
+    {
+        $worker = factory(Worker::class)->create();
+
+        $response = $this->get('/admin/workers/' . $worker->id);
+
+        $response->assertStatus(200)
+            ->assertViewHas('data')
+            ->assertSeeText($worker->name)
+            ->assertSeeText($worker->surname)
+            ->assertSeeText($worker->patronymic)
+            ->assertSeeText($worker->birthdate->format('Y-m-d'))
+            ->assertSeeText($worker->email)
+            ->assertSeeText($worker->phone)
+            ->assertSeeText($worker->work_start->format('Y-m-d'))
+            ->assertSeeText($worker->position)
+            ->assertSeeText($worker->department->title);
+        if ($worker->work_end) {
+            $response->assertSee($worker->work_end->format('Y-m-d'));
+        }
+    }
 }

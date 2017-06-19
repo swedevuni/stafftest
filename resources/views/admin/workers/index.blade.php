@@ -14,7 +14,7 @@
                         @foreach ($departments as $department)
                         <option value="{{ $department->id }}"
                             @if (app('request')->input('department') == $department->id)
-                                selected="selected"
+                            selected="selected"
                             @endif
                         >{{ $department->title }}</option>
                         @endforeach
@@ -24,12 +24,12 @@
                     <span class="input-group-addon">Работает в компании?</span>
                     <select name="working" class="form-control">
                         <option value="">Все варианты</option>
-                        @foreach ([1 => 'Да', 0 => 'Нет'] as $k => $v)
-                            <option value="{{ $k }}"
-                                @if (app('request')->input('working') == $k)
-                                    selected="selected"
-                                @endif
-                            >{{ $v }}</option>
+                        @foreach ([1 => 'Да', 0 => 'Нет'] as $value => $label)
+                        <option value="{{ $value }}"
+                            @if (app('request')->input('working') == $value)
+                            selected="selected"
+                            @endif
+                        >{{ $label }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -38,7 +38,7 @@
             </form>
             <form>
                 @if (app('request')->input('page') > 1)
-                    <input type="hidden" name="page" value="{{ app('request')->input('page') }}">
+                <input type="hidden" name="page" value="{{ app('request')->input('page') }}">
                 @endif
                 <button class="btn btn-default clear-btn" type="submit">Сбросить</button>
             </form>
@@ -49,23 +49,23 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Фамилия</th>
-                    <th>Имя</th>
-                    <th>Отчество</th>
-                    <th>Дата рождения</th>
-                    <th>Эл. почта</th>
-                    <th>Телефон</th>
-                    <th>Начало работы</th>
-                    <th>Окончание работы</th>
-                    <th>Должность</th>
-                    <th>Отдел</th>
+                    <th>@lang('worker.data.surname')</th>
+                    <th>@lang('worker.data.name')</th>
+                    <th>@lang('worker.data.patronymic')</th>
+                    <th>@lang('worker.data.birthdate')</th>
+                    <th>@lang('worker.data.email')</th>
+                    <th>@lang('worker.data.phone')</th>
+                    <th>@lang('worker.data.work_start')</th>
+                    <th>@lang('worker.data.work_end')</th>
+                    <th>@lang('worker.data.position')</th>
+                    <th>@lang('worker.data.department')</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($workers as $worker)
                 <tr>
                     <td>{{ $worker->id }}</td>
-                    <td><a href="/admin/worker/{{ $worker->id }}">{{ $worker->surname }}</a></td>
+                    <td><a href="/admin/workers/{{ $worker->id }}">{{ $worker->surname }}</a></td>
                     <td>{{ $worker->name }}</td>
                     <td>{{ $worker->patronymic }}</td>
                     <td>{{ $worker->birthdate }}</td>

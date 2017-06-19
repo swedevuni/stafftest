@@ -1,3 +1,11 @@
+.navbar .navbar-header {
+    width: 100%;
+}
+.navbar .navbar-header .right-link {
+    float: right !important;
+    margin-right: -15px;
+}
+
 .after-nav-margin {
     margin-top: 7rem;
 }
@@ -12,4 +20,14 @@
 }
 #workers .form-wrapper .input-group {
     margin-bottom: 1rem;
+}
+
+#worker h1 {
+    margin: 1rem 0 2rem;
+}
+#worker .list-group {
+    font-size: 14pt;
+}
+#worker .list-group .caption {
+    font-weight: bold;
 }
