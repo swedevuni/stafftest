@@ -17,7 +17,9 @@ class DepartmentTest extends TestCase
     {
         $worker = factory(Worker::class)->create();
         $department = factory(Department::class)->create();
+        
         $department->receive($worker);
+
         $this->assertEquals($department->id, $worker->department->id);
     }
 }
