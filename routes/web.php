@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::prefix('admin/workers')->group(function () {
+    Route::get('/', 'WorkersController@index');
+});

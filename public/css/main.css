@@ -1,0 +1,15 @@
+.after-nav-margin {
+    margin-top: 7rem;
+}
+
+#workers .form-wrapper {
+    position: relative;
+}
+#workers .form-wrapper .clear-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+#workers .form-wrapper .input-group {
+    margin-bottom: 1rem;
+}
