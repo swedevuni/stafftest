@@ -79,6 +79,8 @@ return [
 
     'locale' => 'en',
 
+    'faker_locale' => 'ru_RU',
+
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
