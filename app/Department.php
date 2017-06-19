@@ -13,5 +13,7 @@ class Department extends Model
         $workers->each(function ($w) {
             $w->department()->associate($this)->save();
         });
+
+        return $this;
     }
 }
