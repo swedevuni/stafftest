@@ -14,8 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/admin', function () {
+    return redirect('/admin/workers');
+});
 
 Route::prefix('admin/workers')->group(function () {
-    Route::get('/', 'WorkersController@index');
+    Route::get('alphabetically/{section?}', 'WorkersController@alphabetically');
     Route::get('{id}', 'WorkersController@detail');
+    Route::get('/', 'WorkersController@index');
 });

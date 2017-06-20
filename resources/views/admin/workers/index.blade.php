@@ -34,12 +34,8 @@
                     </select>
                 </div>
                 <button class="btn btn-default" type="submit">Фильтровать</button>
-                <!--<input type="hidden" name="page" value="{{ app('request')->input('page') }}">-->
             </form>
             <form>
-                @if (app('request')->input('page') > 1)
-                <!--<input type="hidden" name="page" value="{{ app('request')->input('page') }}">-->
-                @endif
                 <button class="btn btn-default clear-btn" type="submit">Сбросить</button>
             </form>
         </div>
@@ -65,7 +61,11 @@
                 @foreach ($workers as $worker)
                 <tr>
                     <td>{{ $worker->id }}</td>
-                    <td><a href="/admin/workers/{{ $worker->id }}">{{ $worker->surname }}</a></td>
+                    <td>
+                        <a href="{{ url('/admin/workers/' . $worker->id) }}">
+                            {{ $worker->surname }}
+                        </a>
+                    </td>
                     <td>{{ $worker->name }}</td>
                     <td>{{ $worker->patronymic }}</td>
                     <td>{{ $worker->birthdate }}</td>
