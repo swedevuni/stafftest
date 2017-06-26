@@ -18,7 +18,7 @@ composer install
 ```
 7. Выполнить в директории команду:
 ```bash
-php artisan migrate
+php artisan migrate:refresh --seed
 ```
 
 ## Тестирование
